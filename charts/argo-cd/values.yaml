@@ -1,0 +1,50 @@
+argo-cd:
+  configs:
+    repositories: # add some priv git repos
+      helm-upstream:
+        type: helm
+        name: stable
+        url: https://charts.helm.sh/stable
+      argo-cd:
+        type: helm
+        name: argo-cd
+        url: https://argoproj.github.io/argo-helm
+  dex:
+    enabled: false
+  server:
+    extraArgs:
+      - --insecure
+    configEnabled: true
+    additionalApplications:
+      - name: apps-manager
+        namespace: argocd
+        destination:
+          namespace: argocd
+          server: https://kubernetes.default.svc
+        project: argo-cd
+        source:
+          path: apps
+          repoURL: https://github.com/kaminek/argocd-poc.git
+          targetRevision: HEAD
+          helm:
+            version: v3
+        syncPolicy:
+          automated:
+            selfHeal: true
+            prune: true
+    additionalProjects:
+      - name: argo-cd
+        namespace: argocd
+        additionalLabels: {}
+        additionalAnnotations: {}
+        description: Staging Project
+        sourceRepos:
+          - "*"
+        destinations:
+          - namespace: argocd
+            server: https://kubernetes.default.svc
+        clusterResourceWhitelist:
+          - group: "*"
+            kind: "*"
+        orphanedResources:
+          warn: false
