@@ -24,7 +24,7 @@ argo-cd:
         project: argo-cd
         source:
           path: apps
-          repoURL: https://github.com/kaminek/argocd-poc.git
+          repoURL: https://github.com/github-amine-kherbouche/argocd-poc.git
           targetRevision: HEAD
           helm:
             version: v3

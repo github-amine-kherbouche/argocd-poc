@@ -10,7 +10,7 @@ spec:
   project: argo-cd
   source:
     path: charts/argo-cd
-    repoURL: https://github.com/kaminek/argocd-poc.git
+    repoURL: https://github.com/github-amine-kherbouche/argocd-poc.git
     targetRevision: HEAD
   syncPolicy:
     automated:
