@@ -16,7 +16,7 @@ argo-cd:
       - --insecure
     configEnabled: true
     additionalApplications:
-      - name: Manager
+      - name: manager
         namespace: argocd
         destination:
           namespace: argocd
