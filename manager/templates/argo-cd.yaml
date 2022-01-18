@@ -9,7 +9,7 @@ spec:
     namespace: argocd
   project: argo-cd
   source:
-    path: charts/argo-cd
+    path: apps/argo-cd
     repoURL: https://github.com/github-amine-kherbouche/argocd-poc.git
     targetRevision: HEAD
   syncPolicy:

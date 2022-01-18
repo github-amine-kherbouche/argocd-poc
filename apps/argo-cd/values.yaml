@@ -16,14 +16,14 @@ argo-cd:
       - --insecure
     configEnabled: true
     additionalApplications:
-      - name: apps-manager
+      - name: Manager
         namespace: argocd
         destination:
           namespace: argocd
           server: https://kubernetes.default.svc
         project: argo-cd
         source:
-          path: apps
+          path: manager
           repoURL: https://github.com/github-amine-kherbouche/argocd-poc.git
           targetRevision: HEAD
           helm:
