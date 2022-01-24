@@ -1,0 +1,27 @@
+name: test tf
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Terraform Init
+        uses: hashicorp/terraform-github-actions/init@v0.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_ACTION_WORKING_DIR: "terraform"
+
+      - name: Terraform Validate
+        uses: hashicorp/terraform-github-actions/validate@v0.3.7
+
+      - name: Terraform Apply
+        uses: hashicorp/terraform-github-actions/apply@v0.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_ACTION_WORKING_DIR: "terraform"
