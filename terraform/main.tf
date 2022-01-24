@@ -14,11 +14,6 @@ provider "aws" {
   region  = "eu-west-1"
 }
 
-resource "aws_instance" "app" {
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "ExampleAppServerInstance"
-  }
+resource "aws_vpc" "main" {
+  cidr_block = "10.200.0.0/16"
 }
-
