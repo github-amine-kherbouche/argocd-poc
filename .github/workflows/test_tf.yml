@@ -28,8 +28,8 @@ jobs:
       - run: terraform init
 
       - id: plan
-        run: terraform plan -no-color
+        run: terraform plan
         continue-on-error: true
 
       - id: apply
-        run: terraform apply --no-color -auto-approve
+        run: terraform apply -auto-approve
